@@ -6,6 +6,9 @@ description: >-
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://transformation-cluster.github.io" # your site URL
 
+# Prevent search engine indexing (remove this line when site is ready)
+noindex: true
+
 # Theme
 theme: minima
 
