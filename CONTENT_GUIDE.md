@@ -317,9 +317,15 @@ assets/
 
 ## Mehrsprachigkeit
 
-### Zweisprachige Inhalte
+Die Website unterstützt Deutsch und Englisch mit einem automatischen Sprachwechsler.
 
-Verwenden Sie die `lang` und `ref` Felder:
+### Wie der Sprachwechsler funktioniert
+
+Auf jeder Seite erscheint oben rechts ein Sprachwechsel-Button (z.B. "EN" auf deutschen Seiten). Dieser zeigt automatisch die entsprechende Version in der anderen Sprache an.
+
+### Zweisprachige Seiten erstellen
+
+Verwenden Sie die `lang` und `ref` Felder im Front Matter:
 
 **Deutsche Version (`about.md`):**
 
@@ -329,6 +335,7 @@ layout: page
 title: Über uns
 lang: de
 ref: about
+permalink: /about/
 ---
 ```
 
@@ -340,14 +347,45 @@ layout: page
 title: About Us
 lang: en
 ref: about
+permalink: /en/about/
 ---
 ```
 
+**Wichtig:** Der `ref`-Wert muss bei beiden Versionen identisch sein!
+
+### Zweisprachige News-Posts
+
+**Deutscher Post:**
+```markdown
+---
+layout: post
+title: "Neue Publikation"
+date: 2025-11-09
+lang: de
+ref: new-publication
+---
+```
+
+**Englischer Post:**
+```markdown
+---
+layout: post
+title: "New Publication"
+date: 2025-11-09
+lang: en
+ref: new-publication
+---
+```
+
+### Navigation
+
+Die Navigation zeigt automatisch nur die Seiten in der aktuellen Sprache an. Sie müssen nichts weiter tun!
+
 ### Best Practices
 
-1. **Konsistente `ref`:** Verwenden Sie die gleiche `ref` für zusammengehörige Übersetzungen
-2. **Dateinamen:** Fügen Sie `-en` für englische Versionen hinzu
-3. **Interne Links:** Verlinken Sie immer beide Sprachversionen
+1. **Konsistente `ref`:** Verwenden Sie für zusammengehörige Übersetzungen immer den gleichen `ref`-Wert
+2. **Englische Permalinks:** Fügen Sie `/en/` am Anfang hinzu: `/en/about/`
+3. **Dateinamen:** Fügen Sie `-en` für englische Versionen hinzu: `about-en.md`
 
 ---
 

@@ -67,11 +67,15 @@ header_pages:
   - news.md
   - team.md
   - projects.md
-  # - publications.md
-  # - events.md
-  # - resources.md
   - contact.md
   - impressum.md
+  - index-en.md
+  - about-en.md
+  - news-en.md
+  - team-en.md
+  - projects-en.md
+  - contact-en.md
+  - impressum-en.md
 
 # Exclude from processing
 exclude:
@@ -86,6 +90,7 @@ exclude:
   - DEPLOYMENT.md
   - PLOTLY_GUIDE.md
   - CONTENT_GUIDE.md
+  - BILINGUAL_SETUP.md
   - setup.sh
   - create_content.py
   - LICENSE
