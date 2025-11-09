@@ -8,8 +8,6 @@ url: "https://transformation-cluster.github.io" # your site URL
 
 # Theme
 theme: minima
-minima:
-  skin: solarized
 
 # Build settings
 markdown: kramdown

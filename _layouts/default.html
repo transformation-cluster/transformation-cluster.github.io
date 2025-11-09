@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
   {%- feed_meta -%}
   
-  <!-- Plotly.js for interactive plots -->
-  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
-  
   {%- if page.custom_css -%}
     {%- for stylesheet in page.custom_css -%}
     <link rel="stylesheet" href="{{ stylesheet | relative_url }}">
