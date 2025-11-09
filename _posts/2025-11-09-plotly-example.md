@@ -3,6 +3,7 @@ layout: post
 title: "Beispiel: Interaktive Plotly Visualisierung"
 date: 2025-11-09 12:00:00 +0100
 lang: de
+ref: plotly-example
 categories: news visualization
 author: "Data Team"
 ---

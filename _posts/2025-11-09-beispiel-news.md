@@ -3,6 +3,7 @@ layout: post
 title: "Beispiel News-Beitrag"
 date: 2025-11-09 10:00:00 +0100
 lang: de
+ref: example-news
 categories: news
 author: "Team Transformations Cluster"
 ---

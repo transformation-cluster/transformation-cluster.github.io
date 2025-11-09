@@ -1,12 +1,17 @@
 <!-- Language Switcher -->
+{% if page.ref and page.lang %}
 <div class="language-switcher">
-  {% assign pages = site.pages | where: "ref", page.ref | sort: 'lang' %}
-  {% for p in pages %}
-    {% if p.lang != page.lang %}
-      <a href="{{ p.url }}" class="lang-link">{{ p.lang | upcase }}</a>
+  {% assign pages = site.pages | where: "ref", page.ref %}
+  {% assign posts = site.posts | where: "ref", page.ref %}
+  {% assign all_translations = pages | concat: posts %}
+  
+  {% for p in all_translations %}
+    {% if p.lang and p.lang != page.lang %}
+      <a href="{{ p.url | relative_url }}" class="lang-link">{{ p.lang | upcase }}</a>
     {% endif %}
   {% endfor %}
 </div>
+{% endif %}
 
 <style>
 .language-switcher {
