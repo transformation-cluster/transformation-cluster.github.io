@@ -1,0 +1,58 @@
+---
+layout: default
+---
+<article class="project">
+  <header class="project-header">
+    <h1 class="project-title">{{ page.title }}</h1>
+    {% if page.duration %}
+    <p class="project-duration">Laufzeit: {{ page.duration }}</p>
+    {% endif %}
+    {% if page.funding %}
+    <p class="project-funding"><strong>Förderung:</strong> {{ page.funding }}</p>
+    {% endif %}
+  </header>
+
+  <div class="project-content">
+    {{ content }}
+    
+    {% if page.team_members %}
+    <h2>Projektteam</h2>
+    <ul>
+    {% for member in page.team_members %}
+      <li>{{ member }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if page.publications %}
+    <h2>Publikationen</h2>
+    <ul>
+    {% for pub in page.publications %}
+      <li>{{ pub }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if page.links %}
+    <h2>Links</h2>
+    <ul>
+    {% for link in page.links %}
+      <li><a href="{{ link.url }}" target="_blank">{{ link.title }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</article>
+
+<style>
+.project-header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 1rem;
+}
+
+.project-duration, .project-funding {
+  color: #666;
+  margin: 0.5rem 0;
+}
+</style>

@@ -1,0 +1,18 @@
+<!-- Reusable Plotly Chart Include -->
+<!-- Usage: {% include plotly-chart.html chart_id="my-chart" data_file="/assets/data/mydata.json" %} -->
+
+<div id="{{ include.chart_id }}" style="width:100%;height:400px;"></div>
+
+<script>
+  fetch('{{ include.data_file }}')
+    .then(response => response.json())
+    .then(chartData => {
+      Plotly.newPlot(
+        '{{ include.chart_id }}',
+        chartData.data,
+        chartData.layout || {},
+        {responsive: true}
+      );
+    })
+    .catch(error => console.error('Error loading chart data:', error));
+</script>

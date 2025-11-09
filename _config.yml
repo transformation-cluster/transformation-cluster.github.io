@@ -1,3 +1,84 @@
-theme: jekyll-theme-minimal
-title: Homepage des Transformations Clusters
-description: Aktuell noch im Aufbau... 🚧
+# Site settings
+title: Transformations Cluster
+email: contact@transformation-cluster.de
+description: >-
+  Interdisciplinary research cluster focusing on societal transformations
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://transformation-cluster.github.io" # your site URL
+
+# Theme
+theme: minima
+minima:
+  skin: solarized
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Collections
+collections:
+  team:
+    output: true
+    permalink: /team/:name/
+  publications:
+    output: true
+    permalink: /publications/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      lang: "de"
+  - scope:
+      path: ""
+      type: "team"
+    values:
+      layout: "team-member"
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: "publication"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Multilingual settings
+languages: ["de", "en"]
+default_lang: "de"
+exclude_from_localization: ["assets", "feed.xml"]
+
+# Navigation
+header_pages:
+  - index.md
+  - about.md
+  - news.md
+  - team.md
+  - projects.md
+  - publications.md
+  - events.md
+  - resources.md
+  - contact.md
+  - impressum.md
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md

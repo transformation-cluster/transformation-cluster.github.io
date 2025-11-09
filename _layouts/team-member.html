@@ -1,0 +1,73 @@
+---
+layout: default
+---
+<article class="team-member">
+  <header class="team-member-header">
+    <h1 class="team-member-title">{{ page.name }}</h1>
+    {% if page.role %}
+    <p class="team-member-role">{{ page.role }}</p>
+    {% endif %}
+  </header>
+
+  <div class="team-member-content">
+    {% if page.image %}
+    <div class="team-member-image">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.name }}">
+    </div>
+    {% endif %}
+
+    <div class="team-member-info">
+      {{ content }}
+      
+      {% if page.email %}
+      <p><strong>E-Mail:</strong> <a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+      {% endif %}
+      
+      {% if page.phone %}
+      <p><strong>Telefon:</strong> {{ page.phone }}</p>
+      {% endif %}
+      
+      {% if page.office %}
+      <p><strong>Büro:</strong> {{ page.office }}</p>
+      {% endif %}
+      
+      {% if page.website %}
+      <p><strong>Website:</strong> <a href="{{ page.website }}" target="_blank">{{ page.website }}</a></p>
+      {% endif %}
+      
+      {% if page.orcid %}
+      <p><strong>ORCID:</strong> <a href="https://orcid.org/{{ page.orcid }}" target="_blank">{{ page.orcid }}</a></p>
+      {% endif %}
+    </div>
+  </div>
+</article>
+
+<style>
+.team-member-header {
+  margin-bottom: 2rem;
+}
+
+.team-member-role {
+  font-size: 1.2rem;
+  color: #666;
+  font-style: italic;
+}
+
+.team-member-content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.team-member-image img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.team-member-info {
+  flex: 1;
+  min-width: 300px;
+}
+</style>

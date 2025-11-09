@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beispiel Plotly Chart</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        #chart {
+            width: 100%;
+            height: 500px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="chart"></div>
+    
+    <script>
+        // Beispieldaten
+        var trace1 = {
+            x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            y: [2, 4, 3, 5, 7, 8, 9, 7, 6, 8],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Datenserie 1',
+            marker: {
+                color: 'rgb(42, 122, 226)',
+                size: 10
+            },
+            line: {
+                color: 'rgb(42, 122, 226)',
+                width: 2
+            }
+        };
+        
+        var trace2 = {
+            x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            y: [3, 2, 5, 4, 6, 7, 6, 8, 9, 7],
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Datenserie 2',
+            marker: {
+                color: 'rgb(255, 127, 14)',
+                size: 10
+            },
+            line: {
+                color: 'rgb(255, 127, 14)',
+                width: 2
+            }
+        };
+        
+        var data = [trace1, trace2];
+        
+        var layout = {
+            title: 'Beispiel Interaktiver Plot',
+            xaxis: {
+                title: 'X-Achse',
+                gridcolor: '#e0e0e0'
+            },
+            yaxis: {
+                title: 'Y-Achse',
+                gridcolor: '#e0e0e0'
+            },
+            hovermode: 'closest',
+            paper_bgcolor: '#ffffff',
+            plot_bgcolor: '#ffffff',
+            font: {
+                family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto',
+                size: 12,
+                color: '#333'
+            },
+            margin: {
+                l: 60,
+                r: 30,
+                t: 60,
+                b: 60
+            }
+        };
+        
+        var config = {
+            responsive: true,
+            displayModeBar: true,
+            displaylogo: false,
+            toImageButtonOptions: {
+                format: 'svg',
+                filename: 'chart',
+                height: 600,
+                width: 800
+            }
+        };
+        
+        Plotly.newPlot('chart', data, layout, config);
+    </script>
+</body>
+</html>
