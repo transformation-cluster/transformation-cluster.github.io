@@ -6,7 +6,8 @@ _site/
 
 # Ignore Bundler files
 .bundle/
-vendor/
+vendor/bundle/
+.config/
 
 # Ignore macOS files
 .DS_Store

@@ -80,3 +80,11 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+  - DEPLOYMENT.md
+  - PLOTLY_GUIDE.md
+  - CONTENT_GUIDE.md
+  - setup.sh
+  - create_content.py
+  - LICENSE
+  - "*.pyc"
+  - __pycache__/
