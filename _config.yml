@@ -67,9 +67,9 @@ header_pages:
   - news.md
   - team.md
   - projects.md
-  - publications.md
-  - events.md
-  - resources.md
+  # - publications.md
+  # - events.md
+  # - resources.md
   - contact.md
   - impressum.md
 
