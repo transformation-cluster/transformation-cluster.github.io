@@ -24,7 +24,7 @@ ref: projects
   </article>
 {% endfor %}
 </div>
-</div>
+
 ---
 
 *Deutsche Version: [Projekte](/projects/)*

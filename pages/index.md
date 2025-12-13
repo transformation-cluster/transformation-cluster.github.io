@@ -17,7 +17,3 @@ Die neuesten Nachrichten und Updates finden Sie in unserem [News-Bereich](/news)
 ## Über uns
 
 Erfahren Sie mehr über unsere [Forschungsprojekte](/projects), unser [Team](/team) und unsere [Publikationen](/publications).
-
----
-
-*English version coming soon / Englische Version folgt in Kürze*
