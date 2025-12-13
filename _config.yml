@@ -60,14 +60,12 @@ exclude_from_localization: ["assets", "feed.xml"]
 # Navigation
 header_pages:
   - pages/index.md
-  - pages/about.md
   - pages/news.md
   - pages/team.md
   - pages/projects.md
   - pages/contact.md
   - pages/impressum.md
   - pages/index-en.md
-  - pages/about-en.md
   - pages/news-en.md
   - pages/team-en.md
   - pages/projects-en.md
