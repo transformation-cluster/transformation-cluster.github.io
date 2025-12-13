@@ -61,11 +61,11 @@ exclude_from_localization: ["assets", "feed.xml"]
 header_pages:
   - pages/news.md
   - pages/team.md
-  - pages/projects.md
+  # - pages/projects.md
   - pages/contact.md
   - pages/news-en.md
   - pages/team-en.md
-  - pages/projects-en.md
+  # - pages/projects-en.md
   - pages/contact-en.md
 
 # Exclude from processing
