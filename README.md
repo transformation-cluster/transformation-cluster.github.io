@@ -1,30 +1,172 @@
 # Transformations Cluster Website
 
-Website des Transformations Clusters - Eine Jekyll-basierte Forschungswebsite mit Unterstützung für News, Team-Profile, Projekte, Publikationen und interaktive Plotly-Visualisierungen.
+Modern, elegant research website with custom CSS animations and bilingual support.
 
 ## 🚀 Quick Start
 
-### Voraussetzungen
+### Prerequisites
 
-- Ruby (Version 2.7 oder höher)
+- Ruby 2.7+
 - Bundler: `gem install bundler`
-- Git
 
 ### Installation
 
 ```bash
-# Repository klonen (falls noch nicht geschehen)
-git clone https://github.com/transformation-cluster/transformation-cluster.github.io.git
-cd transformation-cluster.github.io
-
-# Dependencies installieren
+# Install dependencies
 bundle install
 
-# Lokalen Entwicklungsserver starten
+# Start development server
 bundle exec jekyll serve
 
-# Website aufrufen: http://localhost:4000
+# Visit: http://localhost:4000
 ```
+
+### Development with drafts and future posts
+
+```bash
+bundle exec jekyll serve --drafts --future --livereload
+```
+
+## 📁 Project Structure
+
+```
+├── _config.yml          # Configuration
+├── pages/               # All markdown pages
+├── _layouts/            # HTML templates
+├── _includes/           # Reusable components
+├── _posts/              # News articles
+├── _team/               # Team members
+├── _projects/           # Research projects
+├── _publications/       # Publications
+└── assets/
+    ├── css/             # Custom stylesheets
+    │   ├── main.css     # Base styles & design system
+    │   ├── layout.css   # Layout & grid systems
+    │   ├── components.css # UI components
+    │   └── animations.css # Animation library
+    ├── js/              # JavaScript
+    │   └── animations.js # Scroll animations & interactions
+    ├── images/          # Images
+    └── plots/           # Plotly visualizations
+```
+
+## 🎨 Design System
+
+### Colors
+
+- **Primary**: Forest green (#2d5016)
+- **Accent**: Sage green (#6b8e4e)
+- **Background**: White with gray accents
+
+### Typography
+
+- System font stack for performance
+- Fluid type scale
+- Elegant spacing
+
+### Animations
+
+- Scroll-triggered fade-ins
+- Smooth hover effects
+- Sophisticated transitions
+- Reduced motion support
+
+## 📝 Adding Content
+
+### News Post
+
+Create `_posts/YYYY-MM-DD-title.md`:
+
+```markdown
+---
+layout: post
+title: "Title"
+date: 2025-12-14
+lang: de
+ref: unique-id
+---
+
+Content...
+```
+
+### Team Member
+
+Create `_team/name.md`:
+
+```markdown
+---
+name: "Dr. Name"
+role: "Position"
+image: "/assets/images/team/name.jpg"
+email: "email@example.com"
+---
+
+Bio...
+```
+
+### Project
+
+Create `_projects/project-name.md`:
+
+```markdown
+---
+title: "Project Title"
+duration: "2024-2027"
+funding: "DFG"
+---
+
+Description...
+```
+
+### Publication
+
+Create `_publications/author-year.md`:
+
+```markdown
+---
+title: "Publication Title"
+authors: "Author, A. et al."
+venue: "Journal Name"
+year: 2024
+doi: "10.xxxx/xxxxx"
+---
+
+Abstract...
+```
+
+## 🌍 Bilingual Support
+
+Use `lang` and `ref` in front matter to link translations:
+
+```yaml
+# German (e.g., about.md)
+---
+lang: de
+ref: about
+permalink: /about/
+---
+
+# English (e.g., about-en.md)
+---
+lang: en
+ref: about
+permalink: /en/about/
+---
+```
+
+## 🚀 Deployment
+
+Automatically deployed via GitHub Pages on push to main branch.
+
+**URL**: https://transformation-cluster.github.io
+
+## 📧 Contact
+
+**Email**: contact@transformation-cluster.de
+
+---
+
+**Built with Jekyll** | **Designed with elegance**
 
 ### Entwicklung mit Entwürfen und zukünftigen Posts
 

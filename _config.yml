@@ -9,9 +9,6 @@ url: "https://transformation-cluster.github.io" # your site URL
 # Prevent search engine indexing (remove this line when site is ready)
 noindex: true
 
-# Theme
-theme: minima
-
 # Build settings
 markdown: kramdown
 plugins:
@@ -62,20 +59,20 @@ exclude_from_localization: ["assets", "feed.xml"]
 
 # Navigation
 header_pages:
-  - index.md
-  - about.md
-  - news.md
-  - team.md
-  - projects.md
-  - contact.md
-  - impressum.md
-  - index-en.md
-  - about-en.md
-  - news-en.md
-  - team-en.md
-  - projects-en.md
-  - contact-en.md
-  - impressum-en.md
+  - pages/index.md
+  - pages/about.md
+  - pages/news.md
+  - pages/team.md
+  - pages/projects.md
+  - pages/contact.md
+  - pages/impressum.md
+  - pages/index-en.md
+  - pages/about-en.md
+  - pages/news-en.md
+  - pages/team-en.md
+  - pages/projects-en.md
+  - pages/contact-en.md
+  - pages/impressum-en.md
 
 # Exclude from processing
 exclude:

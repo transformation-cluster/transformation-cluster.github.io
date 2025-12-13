@@ -12,38 +12,3 @@
   {% endfor %}
 </div>
 {% endif %}
-
-<style>
-.language-switcher {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 100;
-}
-
-.lang-link {
-  padding: 5px 10px;
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  font-weight: bold;
-  transition: background-color 0.2s;
-}
-
-.lang-link:hover {
-  background-color: #e0e0e0;
-}
-
-/* Move it below header on mobile */
-@media screen and (max-width: 600px) {
-  .language-switcher {
-    position: relative;
-    top: 0;
-    right: 0;
-    text-align: right;
-    padding: 10px;
-  }
-}
-</style>
