@@ -64,13 +64,11 @@ header_pages:
   - pages/team.md
   - pages/projects.md
   - pages/contact.md
-  - pages/impressum.md
   - pages/index-en.md
   - pages/news-en.md
   - pages/team-en.md
   - pages/projects-en.md
   - pages/contact-en.md
-  - pages/impressum-en.md
 
 # Exclude from processing
 exclude:
