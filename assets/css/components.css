@@ -285,6 +285,12 @@
   flex-wrap: wrap;
 }
 
+/* DOI styling migrated from publications.md */
+.publication-item .doi {
+  font-size: 0.9rem;
+  color: var(--color-gray-600);
+}
+
 /* ========================================
    Buttons
    ======================================== */
@@ -484,4 +490,9 @@ textarea:focus {
   padding: var(--space-5);
   border-radius: var(--border-radius);
   margin: var(--space-6) 0;
+}
+
+/* Small text utility */
+.text-sm {
+  font-size: var(--text-sm) !important;
 }

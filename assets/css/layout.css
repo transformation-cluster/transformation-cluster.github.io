@@ -62,9 +62,36 @@
   margin: var(--space-10) 0;
 }
 
+/* Projects List (migrated from inline markdown styles) */
+.projects-list {
+  margin-top: var(--space-8);
+}
+
+.project-item {
+  border-left: 4px solid var(--color-primary);
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.project-meta {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.funding {
+  font-size: 0.9rem;
+  color: var(--color-gray-700);
+}
+
 /* Publications List */
 .publications-list {
   margin: var(--space-10) 0;
+}
+
+.publications-list h2 {
+  margin-top: var(--space-12);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-border);
 }
 
 .publication-year-group {

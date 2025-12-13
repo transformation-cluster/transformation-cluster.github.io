@@ -20,7 +20,7 @@ ref: team
     <p class="card-subtitle">{{ member.role }}</p>
     {% endif %}
     {% if member.email %}
-    <p class="text-muted" style="font-size: var(--text-sm);">{{ member.email }}</p>
+    <p class="text-muted text-sm">{{ member.email }}</p>
     {% endif %}
   </a>
 {% endfor %}
@@ -31,21 +31,6 @@ ref: team
   <p>Currently no team members available. Please add files in the <code>_team/</code> directory.</p>
 </div>
 {% endif %}
-
-.team-member-card img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.team-member-card .role {
-  color: #666;
-  font-style: italic;
-  margin: 0.5rem 0;
-}
-</style>
 
 ---
 
