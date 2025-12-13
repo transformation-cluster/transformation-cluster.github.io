@@ -1,0 +1,284 @@
+/* ========================================
+   Transformation Cluster - Main Styles
+   Elegant minimal design with green accents
+   ======================================== */
+
+:root {
+  /* Color Palette - Elegant Green Theme */
+  --color-primary: #2d5016;        /* Deep forest green */
+  --color-primary-light: #4a7a2c;  /* Lighter green */
+  --color-primary-dark: #1a3009;   /* Darker green */
+  --color-accent: #6b8e4e;         /* Sage green accent */
+  
+  /* Neutrals */
+  --color-black: #0a0a0a;
+  --color-gray-900: #1a1a1a;
+  --color-gray-800: #2a2a2a;
+  --color-gray-700: #3a3a3a;
+  --color-gray-600: #5a5a5a;
+  --color-gray-500: #7a7a7a;
+  --color-gray-400: #9a9a9a;
+  --color-gray-300: #c0c0c0;
+  --color-gray-200: #e0e0e0;
+  --color-gray-100: #f5f5f5;
+  --color-white: #ffffff;
+  
+  /* Semantic Colors */
+  --color-text: var(--color-gray-900);
+  --color-text-light: var(--color-gray-600);
+  --color-background: var(--color-white);
+  --color-background-alt: var(--color-gray-100);
+  --color-border: var(--color-gray-200);
+  --color-border-light: var(--color-gray-100);
+  
+  /* Typography */
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Georgia", "Times New Roman", serif;
+  
+  /* Type Scale */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;      /* 4px */
+  --space-2: 0.5rem;       /* 8px */
+  --space-3: 0.75rem;      /* 12px */
+  --space-4: 1rem;         /* 16px */
+  --space-5: 1.25rem;      /* 20px */
+  --space-6: 1.5rem;       /* 24px */
+  --space-8: 2rem;         /* 32px */
+  --space-10: 2.5rem;      /* 40px */
+  --space-12: 3rem;        /* 48px */
+  --space-16: 4rem;        /* 64px */
+  --space-20: 5rem;        /* 80px */
+  --space-24: 6rem;        /* 96px */
+  
+  /* Layout */
+  --max-width: 1200px;
+  --max-width-text: 65ch;
+  --border-radius-sm: 4px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+  
+  /* Animation */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-elegant: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========================================
+   Reset & Base Styles
+   ======================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-system);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: var(--text-4xl);
+  letter-spacing: -0.01em;
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-5);
+}
+
+h3 {
+  font-size: var(--text-3xl);
+  margin-top: var(--space-10);
+}
+
+h4 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-8);
+}
+
+h5 {
+  font-size: var(--text-xl);
+}
+
+h6 {
+  font-size: var(--text-lg);
+}
+
+p {
+  margin-bottom: var(--space-5);
+  max-width: var(--max-width-text);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  color: var(--color-primary-light);
+  border-bottom-color: var(--color-primary-light);
+}
+
+strong, b {
+  font-weight: 600;
+  color: var(--color-gray-900);
+}
+
+em, i {
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: var(--space-5);
+  padding-left: var(--space-6);
+  max-width: var(--max-width-text);
+}
+
+li {
+  margin-bottom: var(--space-2);
+}
+
+/* Code */
+code {
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background-color: var(--color-gray-100);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-gray-800);
+}
+
+pre {
+  background-color: var(--color-gray-100);
+  padding: var(--space-4);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--color-border);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  font-size: var(--text-sm);
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: var(--space-5);
+  margin: var(--space-6) 0;
+  color: var(--color-gray-700);
+  font-style: italic;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-12) 0;
+}
+
+/* ========================================
+   Utilities
+   ======================================== */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.container-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-text-light);
+}
+
+.section {
+  padding: var(--space-16) 0;
+}
+
+.section-lg {
+  padding: var(--space-24) 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --text-5xl: 2.25rem;    /* 36px */
+    --text-4xl: 1.875rem;   /* 30px */
+    --text-3xl: 1.5rem;     /* 24px */
+  }
+  
+  .section {
+    padding: var(--space-12) 0;
+  }
+  
+  .section-lg {
+    padding: var(--space-16) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .container-narrow {
+    padding: 0 var(--space-4);
+  }
+}

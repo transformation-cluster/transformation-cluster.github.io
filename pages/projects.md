@@ -24,25 +24,3 @@ ref: projects
   </article>
 {% endfor %}
 </div>
-
-<style>
-.projects-list {
-  margin-top: 2rem;
-}
-
-.project-item {
-  border-left: 4px solid #2a7ae2;
-  padding-left: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.project-meta {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.funding {
-  font-size: 0.9rem;
-  color: #555;
-}
-</style>

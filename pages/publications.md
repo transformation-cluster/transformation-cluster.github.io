@@ -35,31 +35,3 @@ ref: publications
   {% endfor %}
 {% endfor %}
 </div>
-
-<style>
-.publications-list h2 {
-  margin-top: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e0e0e0;
-}
-
-.publication-item {
-  margin: 1.5rem 0;
-  padding-left: 1rem;
-}
-
-.publication-item .authors {
-  color: #555;
-  margin: 0.5rem 0;
-}
-
-.publication-item .venue {
-  color: #666;
-  margin: 0.5rem 0;
-}
-
-.publication-item .doi {
-  font-size: 0.9rem;
-  color: #777;
-}
-</style>

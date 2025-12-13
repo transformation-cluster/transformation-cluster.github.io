@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-<article class="publication">
-  <header class="publication-header">
+<article class="publication animate-on-scroll">
+  <header class="publication-header fade-in-left">
     <h1 class="publication-title">{{ page.title }}</h1>
     {% if page.authors %}
     <p class="publication-authors">{{ page.authors }}</p>
@@ -11,74 +11,28 @@ layout: default
     <p class="publication-venue"><em>{{ page.venue }}</em></p>
     {% endif %}
     {% if page.year %}
-    <p class="publication-year">{{ page.year }}</p>
+    <p class="publication-year">📅 {{ page.year }}</p>
     {% endif %}
   </header>
 
-  <div class="publication-content">
+  <div class="publication-content fade-in-right">
     {{ content }}
     
-    {% if page.doi %}
-    <p><strong>DOI:</strong> <a href="https://doi.org/{{ page.doi }}" target="_blank">{{ page.doi }}</a></p>
-    {% endif %}
-    
-    {% if page.pdf %}
-    <p><a href="{{ page.pdf | relative_url }}" class="btn-download">Download PDF</a></p>
-    {% endif %}
+    <div class="highlight-box animate-on-scroll">
+      {% if page.doi %}
+      <p><strong>DOI:</strong> <a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener">{{ page.doi }}</a></p>
+      {% endif %}
+      
+      {% if page.pdf %}
+      <p><a href="{{ page.pdf | relative_url }}" class="btn-download btn-press">📄 Download PDF</a></p>
+      {% endif %}
+    </div>
     
     {% if page.bibtex %}
-    <details>
-      <summary>BibTeX</summary>
+    <details class="animate-on-scroll">
+      <summary>📚 BibTeX Citation</summary>
       <pre><code>{{ page.bibtex }}</code></pre>
     </details>
     {% endif %}
   </div>
 </article>
-
-<style>
-.publication-header {
-  margin-bottom: 2rem;
-}
-
-.publication-authors {
-  color: #555;
-  margin: 0.5rem 0;
-}
-
-.publication-venue {
-  color: #666;
-  margin: 0.5rem 0;
-}
-
-.publication-year {
-  color: #777;
-  font-weight: bold;
-}
-
-.btn-download {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #2a7ae2;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  margin-top: 1rem;
-}
-
-.btn-download:hover {
-  background-color: #1e5bb8;
-}
-
-details {
-  margin-top: 1rem;
-  border: 1px solid #e0e0e0;
-  padding: 1rem;
-  border-radius: 4px;
-}
-
-details pre {
-  background-color: #f5f5f5;
-  padding: 1rem;
-  overflow-x: auto;
-}
-</style>

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: News
+title: Neuigkeiten
 permalink: /news/
 lang: de
 ref: news

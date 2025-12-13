@@ -6,7 +6,15 @@ ref: home
 permalink: /en/
 ---
 
-# Welcome to the Transformations Cluster
+<div class="hero-banner">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Transformations Cluster</h1>
+    <p class="hero-subtitle">Interdisciplinary research on societal transformation processes</p>
+  </div>
+</div>
+
+## Welcome
 
 Welcome to the website of the Transformations Cluster. We are an interdisciplinary research consortium dedicated to studying societal transformation processes.
 

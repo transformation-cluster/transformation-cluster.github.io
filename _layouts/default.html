@@ -10,18 +10,18 @@
   {%- endif -%}
   
   {%- seo -%}
-  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/layout.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/components.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/animations.css' | relative_url }}">
+  
   {%- feed_meta -%}
   
   {%- if page.custom_css -%}
     {%- for stylesheet in page.custom_css -%}
     <link rel="stylesheet" href="{{ stylesheet | relative_url }}">
-    {%- endfor -%}
-  {%- endif -%}
-  
-  {%- if page.custom_js -%}
-    {%- for javascript in page.custom_js -%}
-    <script src="{{ javascript | relative_url }}"></script>
     {%- endfor -%}
   {%- endif -%}
 </head>
@@ -30,11 +30,20 @@
   {%- include header.html -%}
   
   <main class="page-content" aria-label="Content">
-    <div class="wrapper">
+    <div class="container">
       {{ content }}
     </div>
   </main>
   
   {%- include footer.html -%}
+  
+  <!-- Animation Scripts -->
+  <script src="{{ '/assets/js/animations.js' | relative_url }}"></script>
+  
+  {%- if page.custom_js -%}
+    {%- for javascript in page.custom_js -%}
+    <script src="{{ javascript | relative_url }}"></script>
+    {%- endfor -%}
+  {%- endif -%}
 </body>
 </html>
