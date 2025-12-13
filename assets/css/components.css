@@ -468,6 +468,102 @@ textarea:focus {
 }
 
 /* ========================================
+   Hero Banner
+   ======================================== */
+
+.hero-banner {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 600px;
+  background-image: url('/assets/images/panorama.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: var(--space-12);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 80, 22, 0.75) 0%,
+    rgba(107, 142, 78, 0.65) 50%,
+    rgba(45, 80, 22, 0.75) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: var(--space-8);
+  max-width: 900px;
+}
+
+.hero-title {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: var(--text-xl);
+  font-weight: 300;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .hero-title {
+    font-size: var(--text-3xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--text-base);
+  }
+  
+  .hero-content {
+    padding: var(--space-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    height: 40vh;
+    min-height: 250px;
+  }
+  
+  .hero-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--text-sm);
+  }
+}
+
+/* ========================================
    Utilities
    ======================================== */
 

@@ -6,7 +6,15 @@ lang: de
 ref: home
 ---
 
-# Willkommen beim Transformations Cluster
+<div class="hero-banner">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Transformations Cluster</h1>
+    <p class="hero-subtitle">Interdisziplinäre Forschung zu gesellschaftlichen Transformationsprozessen</p>
+  </div>
+</div>
+
+## Willkommen
 
 Herzlich willkommen auf der Website des Transformations Clusters. Wir sind ein interdisziplinäres Forschungskonsortium, das sich mit gesellschaftlichen Transformationsprozessen beschäftigt.
 
