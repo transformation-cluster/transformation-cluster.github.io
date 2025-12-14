@@ -674,6 +674,40 @@ textarea:focus {
   margin-bottom: var(--space-2);
 }
 
+.cy-popup .popup-university {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.cy-popup .popup-cluster {
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  background-color: var(--color-background-alt);
+  border-radius: var(--border-radius-sm);
+  display: inline-block;
+}
+
+.cy-popup .popup-topic {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cy-popup .popup-description {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
 .cy-popup .popup-role {
   font-size: var(--text-sm);
   color: var(--color-accent);
@@ -694,6 +728,117 @@ textarea:focus {
   font-style: italic;
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-2);
+}
+
+/* Cluster Legend Styles */
+#cluster-legend {
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  background-color: var(--color-background-alt);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+}
+
+.legend-title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.legend-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-2);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+
+.legend-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.legend-item.active {
+  background-color: rgba(45, 80, 22, 0.1);
+  border: 2px solid var(--color-primary);
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.legend-label {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+/* Graph Control Extensions */
+.graph-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  background-color: var(--color-background-alt);
+  border-radius: var(--border-radius);
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.graph-controls .btn {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: white;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-weight: 500;
+}
+
+.graph-controls .btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.graph-controls .btn.active {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.graph-controls input[type="range"] {
+  width: 150px;
+  margin: 0 var(--space-2);
+}
+
+.graph-controls .weight-display {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  min-width: 40px;
+  text-align: center;
 }
 
 /* Responsive adjustments */
