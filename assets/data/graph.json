@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "max-mustermann",
+        "name": "Max Mustermann",
+        "url": "/team/max-mustermann/",
+        "photo": "/assets/images/team/max-mustermann.jpg",
+        "role": "Principal Investigator",
+        "bio": "Expert in transformation research and interdisciplinary collaboration"
+      }
+    },
+    {
+      "data": {
+        "id": "team-member-2",
+        "name": "Anna Schmidt",
+        "url": "/team/",
+        "photo": "",
+        "role": "Postdoctoral Researcher",
+        "bio": "Specializes in social transformation processes"
+      }
+    },
+    {
+      "data": {
+        "id": "team-member-3",
+        "name": "Peter Müller",
+        "url": "/team/",
+        "photo": "",
+        "role": "PhD Candidate",
+        "bio": "Researching sustainable transformation pathways"
+      }
+    },
+    {
+      "data": {
+        "id": "team-member-4",
+        "name": "Lisa Weber",
+        "url": "/team/",
+        "photo": "",
+        "role": "Research Associate",
+        "bio": "Focus on economic transformation dynamics"
+      }
+    },
+    {
+      "data": {
+        "id": "team-member-5",
+        "name": "Thomas Klein",
+        "url": "/team/",
+        "photo": "",
+        "role": "Senior Researcher",
+        "bio": "Expert in policy and governance transformation"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "source": "max-mustermann",
+        "target": "team-member-2",
+        "label": "supervises"
+      }
+    },
+    {
+      "data": {
+        "source": "max-mustermann",
+        "target": "team-member-3",
+        "label": "supervises"
+      }
+    },
+    {
+      "data": {
+        "source": "team-member-2",
+        "target": "team-member-4",
+        "label": "collaborates with"
+      }
+    },
+    {
+      "data": {
+        "source": "team-member-3",
+        "target": "team-member-5",
+        "label": "collaborates with"
+      }
+    },
+    {
+      "data": {
+        "source": "max-mustermann",
+        "target": "team-member-5",
+        "label": "collaborates with"
+      }
+    }
+  ]
+}

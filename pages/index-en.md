@@ -4,6 +4,9 @@ title: Home
 lang: en
 ref: home
 permalink: /en/
+custom_js:
+  - https://unpkg.com/cytoscape/dist/cytoscape.min.js
+  - /assets/js/cytoscape-init.js
 ---
 
 <div class="hero-banner">
@@ -17,6 +20,29 @@ permalink: /en/
 ## Welcome
 
 Welcome to the website of the Transformations Cluster. We are an interdisciplinary research consortium dedicated to studying societal transformation processes.
+
+## Our Network
+
+Explore the collaboration within our research team. Click on nodes to visit team member profiles.
+
+<div class="graph-controls">
+  <label for="layout-selector">Choose Layout:</label>
+  <select id="layout-selector">
+    <option value="cose" selected>Force-Directed</option>
+    <option value="circle">Circle</option>
+    <option value="grid">Grid</option>
+    <option value="concentric">Concentric</option>
+    <option value="breadthfirst">Hierarchical</option>
+  </select>
+  <div class="zoom-controls">
+    <button id="zoom-in" class="btn-zoom" title="Zoom In">+</button>
+    <button id="zoom-out" class="btn-zoom" title="Zoom Out">−</button>
+    <button id="zoom-reset" class="btn-zoom" title="Reset">⟲</button>
+  </div>
+</div>
+
+<div id="cy-graph" class="cytoscape-container"></div>
+<div id="cy-popup" class="cy-popup"></div>
 
 ## Latest News
 
