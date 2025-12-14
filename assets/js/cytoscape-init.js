@@ -182,6 +182,63 @@
             const weight = ele.data('weight') || 0.1;
             return Math.max(0.3, weight * 0.9);
           });
+          
+          // Display detailed information in popup
+          const popup = document.getElementById('cy-popup');
+          if (popup) {
+            const name = node.data('name');
+            const university = node.data('university');
+            const topic = node.data('topic');
+            const description = node.data('description');
+            const clusterName = node.data('cluster_name');
+            const cluster = node.data('cluster');
+            const clusterColor = CLUSTER_COLORS[cluster] || '#999';
+            
+            // Hide popup
+            const popup = document.getElementById('cy-popup');
+            if (popup) {
+              popup.style.display = 'none';
+              popup.style.position = 'absolute';
+              popup.style.transform = 'none';
+            }
+            
+            let content = `<div class="popup-header"><strong>${name || 'Researcher'}</strong></div>`;
+            
+            if (university) {
+              content += `<div class="popup-university">🏛️ <em>${university}</em></div>`;
+            }
+            
+            if (clusterName) {
+              content += `<div class="popup-cluster" style="background-color: ${clusterColor}20; border-left: 4px solid ${clusterColor}">
+                🏷️ ${clusterName}
+              </div>`;
+            }
+            
+            if (topic) {
+              content += `<div class="popup-topic"><strong>Research Topic:</strong><br>${topic}</div>`;
+            }
+            
+            if (description) {
+              content += `<div class="popup-description"><strong>Description:</strong><br>${description}</div>`;
+            }
+            
+            // Show connection count
+            const degree = node.degree();
+            content += `<div class="popup-stats">📊 ${degree} research connections</div>`;
+            
+            content += `<div class="popup-hint">Click background to close • Hover other nodes for quick preview</div>`;
+            
+            popup.innerHTML = content;
+            popup.style.display = 'block';
+            popup.style.position = 'fixed';
+            popup.style.maxWidth = '500px';
+            popup.style.maxHeight = '80vh';
+            popup.style.overflowY = 'auto';
+            popup.style.top = '50%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popup.style.zIndex = '10000';
+          }
         });
         
         // Click on background to deselect
@@ -193,20 +250,32 @@
               const weight = ele.data('weight') || 0.1;
               return Math.max(0.2, weight * 0.8);
             });
+            
+            // Hide popup
+            const popup = document.getElementById('cy-popup');
+            if (popup) {
+              popup.style.display = 'none';
+              popup.style.position = 'absolute';
+              popup.style.transform = 'none';
+            }
           }
         });
         
-        // Hover popup functionality for PhD researchers
+        // Hover popup functionality for PhD researchers (quick preview)
         const popup = document.getElementById('cy-popup');
         
         if (popup) {
           cy.on('mouseover', 'node', function(evt) {
+            // Only show hover preview if no node is currently selected
+            if (cy.$(':selected').length > 0) return;
+            
             const node = evt.target;
             const name = node.data('name');
             const university = node.data('university');
             const topic = node.data('topic');
-            const description = node.data('description');
             const clusterName = node.data('cluster_name');
+            const cluster = node.data('cluster');
+            const clusterColor = CLUSTER_COLORS[cluster] || '#999';
             
             let content = `<div class="popup-header"><strong>${name || 'Researcher'}</strong></div>`;
             
@@ -215,25 +284,24 @@
             }
             
             if (clusterName) {
-              content += `<div class="popup-cluster">🏷️ ${clusterName}</div>`;
+              content += `<div class="popup-cluster" style="background-color: ${clusterColor}20; border-left: 4px solid ${clusterColor}">
+                🏷️ ${clusterName}
+              </div>`;
             }
             
             if (topic) {
-              content += `<div class="popup-topic"><strong>Topic:</strong> ${topic}</div>`;
+              const shortTopic = topic.length > 100 ? topic.substring(0, 100) + '...' : topic;
+              content += `<div class="popup-topic"><strong>Topic:</strong> ${shortTopic}</div>`;
             }
             
-            if (description) {
-              // Truncate long descriptions
-              const shortDesc = description.length > 200 
-                ? description.substring(0, 200) + '...' 
-                : description;
-              content += `<div class="popup-description">${shortDesc}</div>`;
-            }
-            
-            content += `<div class="popup-hint">Click to highlight connections</div>`;
+            content += `<div class="popup-hint">Click for full details</div>`;
             
             popup.innerHTML = content;
             popup.style.display = 'block';
+            popup.style.position = 'absolute';
+            popup.style.maxWidth = '300px';
+            popup.style.maxHeight = 'none';
+            popup.style.transform = 'none';
             
             // Position popup near node
             const renderedPos = node.renderedPosition();
@@ -245,12 +313,17 @@
           });
           
           cy.on('mouseout', 'node', function() {
-            popup.style.display = 'none';
+            // Only hide on mouseout if no node is selected
+            if (cy.$(':selected').length === 0) {
+              popup.style.display = 'none';
+            }
           });
           
-          // Hide popup on pan/zoom
+          // Hide hover popup on pan/zoom
           cy.on('pan zoom', function() {
-            popup.style.display = 'none';
+            if (cy.$(':selected').length === 0) {
+              popup.style.display = 'none';
+            }
           });
         }
         
