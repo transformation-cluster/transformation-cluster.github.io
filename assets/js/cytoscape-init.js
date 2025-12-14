@@ -35,6 +35,16 @@
         const elements = data.elements;
         const metadata = data.metadata;
         
+        // Scale up positions for better spacing (multiply by large factor)
+        elements.nodes.forEach(node => {
+          if (node.data.x !== undefined && node.data.y !== undefined) {
+            node.position = {
+              x: node.data.x * 500,  // Scale from normalized to larger space
+              y: node.data.y * 500
+            };
+          }
+        });
+        
         // Store metadata globally for legend
         window.phdNetworkMetadata = metadata;
         
@@ -260,23 +270,32 @@
               'cose': {
                 name: 'cose',
                 animate: true,
-                animationDuration: 2000,
-                padding: 50,
-                nodeRepulsion: function(node) { return 4000; },
+                animationDuration: 5000,
+                animationEasing: 'ease-out',
+                padding: 100,
+                boundingBox: { x1: 0, y1: 0, x2: 4000, y2: 4000 },
+                nodeRepulsion: function(node) { return 8000000; },
                 idealEdgeLength: function(edge) {
                   const weight = edge.data('weight') || 0.5;
-                  // Stronger connections (higher weight) = shorter ideal length
-                  return 100 * (1 - weight * 0.5);
+                  // Much longer base edge length
+                  return 500 * (2 - weight);
                 },
                 edgeElasticity: function(edge) {
                   const weight = edge.data('weight') || 0.5;
-                  return weight * 200;
+                  return Math.max(0.1, weight * 10);
                 },
-                gravity: 50,
-                numIter: 2000,
-                initialTemp: 1000,
-                coolingFactor: 0.99,
-                minTemp: 1.0
+                gravity: 0.01,
+                numIter: 10000,
+                initialTemp: 2000,
+                coolingFactor: 0.995,
+                minTemp: 1.0,
+                nodeOverlap: 100,
+                refresh: 20,
+                fit: false,
+                randomize: true,
+                componentSpacing: 400,
+                nestingFactor: 1.2,
+                avoidOverlap: true
               },
               'circle': {
                 name: 'circle',
@@ -307,9 +326,9 @@
             
             // Fit to viewport after layout completes
             if (layouts[layoutName] && layouts[layoutName].animate) {
-              layout.on('layoutstop', function() {
-                cy.fit(null, 50);
-              });
+              setTimeout(function() {
+                cy.fit(null, 100);
+              }, layouts[layoutName].animationDuration || 1000);
             }
           });
         }
