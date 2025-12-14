@@ -1,0 +1,66 @@
+{
+  "nodes": [
+    {
+      "data": {
+        "id": "max-mustermann"
+      }
+    },
+    {
+      "data": {
+        "id": "team-member-2"
+      }
+    },
+    {
+      "data": {
+        "id": "team-member-3"
+      }
+    },
+    {
+      "data": {
+        "id": "team-member-4"
+      }
+    },
+    {
+      "data": {
+        "id": "team-member-5"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "source": "max-mustermann",
+        "target": "team-member-2",
+        "label": "supervises"
+      }
+    },
+    {
+      "data": {
+        "source": "max-mustermann",
+        "target": "team-member-3",
+        "label": "supervises"
+      }
+    },
+    {
+      "data": {
+        "source": "team-member-2",
+        "target": "team-member-4",
+        "label": "collaborates with"
+      }
+    },
+    {
+      "data": {
+        "source": "team-member-3",
+        "target": "team-member-5",
+        "label": "collaborates with"
+      }
+    },
+    {
+      "data": {
+        "source": "max-mustermann",
+        "target": "team-member-5",
+        "label": "collaborates with"
+      }
+    }
+  ]
+}

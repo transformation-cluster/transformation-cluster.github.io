@@ -1,6 +1,7 @@
 ---
 name: "Dr. Max Mustermann"
 role: "Principal Investigator"
+bio: "Expert in transformation research and interdisciplinary collaboration. Leads multiple research projects focused on societal transformation processes."
 image: "/assets/images/team/max-mustermann.jpg"
 email: "max.mustermann@example.com"
 phone: "+49 (0) XXX XXXXXX"
