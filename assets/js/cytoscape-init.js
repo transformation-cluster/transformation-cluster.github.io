@@ -33,7 +33,7 @@
                   return photo && photo.trim() !== '' ? photo : null;
                 },
                 'background-fit': 'cover',
-                'background-clip': 'none',
+                'background-clip': 'node',
                 'border-width': 3,
                 'border-color': '#6b8e4e',
                 'label': 'data(name)',
@@ -45,7 +45,8 @@
                 'text-valign': 'bottom',
                 'text-margin-y': 5,
                 'width': 60,
-                'height': 60
+                'height': 60,
+                'shape': 'ellipse'
               }
             },
             {
