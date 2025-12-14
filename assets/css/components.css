@@ -854,6 +854,70 @@ textarea:focus {
   text-align: center;
 }
 
+/* Force Layout Controls */
+.force-controls {
+  margin-top: var(--space-6);
+  padding: var(--space-6);
+  background-color: var(--color-background-alt);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--color-primary);
+}
+
+.force-controls h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  color: var(--color-primary);
+  font-size: var(--text-lg);
+}
+
+.force-control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.force-control-grid .control-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.force-control-grid label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.force-control-grid label span {
+  color: var(--color-primary);
+  font-family: monospace;
+  font-size: var(--text-base);
+}
+
+.force-control-grid input[type="range"] {
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.force-control-grid .btn {
+  margin-top: var(--space-2);
+}
+
+.force-control-grid .btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.force-control-grid .btn-primary:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .cytoscape-container {

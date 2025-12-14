@@ -333,77 +333,62 @@
           layoutSelector.addEventListener('change', function(e) {
             const layoutName = e.target.value;
             
-            // Layout configurations
-            const layouts = {
-              'preset': {
-                name: 'preset',
-                padding: 50,
-                animate: false
-              },
-              'cose': {
-                name: 'cose',
-                animate: true,
-                animationDuration: 5000,
-                animationEasing: 'ease-out',
-                padding: 100,
-                boundingBox: { x1: 0, y1: 0, x2: 4000, y2: 4000 },
-                nodeRepulsion: function(node) { return 8000000; },
-                idealEdgeLength: function(edge) {
-                  const weight = edge.data('weight') || 0.5;
-                  // Much longer base edge length
-                  return 500 * (2 - weight);
-                },
-                edgeElasticity: function(edge) {
-                  const weight = edge.data('weight') || 0.5;
-                  return Math.max(0.1, weight * 10);
-                },
-                gravity: 0.01,
-                numIter: 10000,
-                initialTemp: 2000,
-                coolingFactor: 0.995,
-                minTemp: 1.0,
-                nodeOverlap: 100,
-                refresh: 20,
-                fit: false,
-                randomize: true,
-                componentSpacing: 400,
-                nestingFactor: 1.2,
-                avoidOverlap: true
-              },
-              'circle': {
-                name: 'circle',
-                animate: true,
-                animationDuration: 1000,
-                padding: 50,
-                sort: function(a, b) {
-                  return a.data('cluster') - b.data('cluster');
-                }
-              },
-              'concentric': {
-                name: 'concentric',
-                animate: true,
-                animationDuration: 1000,
-                padding: 50,
-                concentric: function(node) {
-                  return node.degree();
-                },
-                levelWidth: function() {
-                  return 3;
-                },
-                minNodeSpacing: 50
-              }
-            };
-            
-            const layout = cy.layout(layouts[layoutName] || layouts['preset']);
-            layout.run();
-            
-            // Fit to viewport after layout completes
-            if (layouts[layoutName] && layouts[layoutName].animate) {
-              setTimeout(function() {
-                cy.fit(null, 100);
-              }, layouts[layoutName].animationDuration || 1000);
+            // Show/hide force controls
+            const forceControls = document.getElementById('force-controls');
+            if (forceControls) {
+              forceControls.style.display = layoutName === 'cose' ? 'block' : 'none';
             }
+            
+            runLayout(layoutName);
           });
+        }
+        
+        // Setup force layout parameter controls
+        setupForceControls(cy);
+        
+        // Function to run layout
+        function runLayout(layoutName) {
+          // Layout configurations
+          const layouts = {
+            'preset': {
+              name: 'preset',
+              padding: 50,
+              animate: false
+            },
+            'cose': getForceLayoutConfig(),
+            'circle': {
+              name: 'circle',
+              animate: true,
+              animationDuration: 1000,
+              padding: 50,
+              sort: function(a, b) {
+                return a.data('cluster') - b.data('cluster');
+              }
+            },
+            'concentric': {
+              name: 'concentric',
+              animate: true,
+              animationDuration: 1000,
+              padding: 50,
+              concentric: function(node) {
+                return node.degree();
+              },
+              levelWidth: function() {
+                return 3;
+              },
+              minNodeSpacing: 50
+            }
+          };
+          
+          const layout = cy.layout(layouts[layoutName] || layouts['preset']);
+          layout.run();
+          
+          // Fit to viewport after layout completes
+          if (layouts[layoutName] && layouts[layoutName].animate) {
+            setTimeout(function() {
+              cy.fit(null, 100);
+            }, layouts[layoutName].animationDuration || 1000);
+          }
         }
         
         // Add fit button handler
@@ -427,6 +412,94 @@
         console.error('Error loading PhD network data:', error);
         container.innerHTML = '<p style="text-align: center; padding: 2rem;">Error loading network graph. Please try again later.</p>';
       });
+  }
+  
+  // Get force layout configuration from sliders
+  function getForceLayoutConfig() {
+    const nodeRepulsion = parseFloat(document.getElementById('node-repulsion')?.value || 8192);
+    const edgeLength = parseFloat(document.getElementById('edge-length')?.value || 150);
+    const edgeElasticity = parseFloat(document.getElementById('edge-elasticity')?.value || 100);
+    const gravity = parseFloat(document.getElementById('gravity')?.value || 1.0);
+    const numIter = parseInt(document.getElementById('num-iter')?.value || 2500);
+    
+    return {
+      name: 'cose',
+      animate: true,
+      animationDuration: 3000,
+      animationEasing: 'ease-out',
+      padding: 50,
+      nodeRepulsion: function(node) { return nodeRepulsion; },
+      idealEdgeLength: function(edge) {
+        const weight = edge.data('weight') || 0.5;
+        // Use slider value as base, adjust by weight
+        return edgeLength * (0.5 + (1 - weight) * 0.5);
+      },
+      edgeElasticity: function(edge) {
+        const weight = edge.data('weight') || 0.5;
+        return weight * edgeElasticity;
+      },
+      gravity: gravity,
+      numIter: numIter,
+      initialTemp: 200,
+      coolingFactor: 0.95,
+      minTemp: 1.0,
+      refresh: 20,
+      fit: true,
+      randomize: true,
+      avoidOverlap: true
+    };
+  }
+  
+  // Setup force layout parameter controls
+  function setupForceControls(cy) {
+    // Update display values when sliders change
+    const sliders = [
+      { id: 'node-repulsion', displayId: 'node-repulsion-value', format: v => Math.round(v) },
+      { id: 'edge-length', displayId: 'edge-length-value', format: v => Math.round(v) },
+      { id: 'edge-elasticity', displayId: 'edge-elasticity-value', format: v => Math.round(v) },
+      { id: 'gravity', displayId: 'gravity-value', format: v => v.toFixed(1) },
+      { id: 'num-iter', displayId: 'num-iter-value', format: v => Math.round(v) }
+    ];
+    
+    sliders.forEach(slider => {
+      const element = document.getElementById(slider.id);
+      const display = document.getElementById(slider.displayId);
+      
+      if (element && display) {
+        element.addEventListener('input', function() {
+          display.textContent = slider.format(parseFloat(this.value));
+        });
+      }
+    });
+    
+    // Apply layout button
+    const applyButton = document.getElementById('apply-force-layout');
+    if (applyButton) {
+      applyButton.addEventListener('click', function() {
+        const layout = cy.layout(getForceLayoutConfig());
+        layout.run();
+        setTimeout(function() {
+          cy.fit(null, 100);
+        }, 3000);
+      });
+    }
+    
+    // Reset parameters button
+    const resetButton = document.getElementById('reset-force-params');
+    if (resetButton) {
+      resetButton.addEventListener('click', function() {
+        document.getElementById('node-repulsion').value = 8192;
+        document.getElementById('node-repulsion-value').textContent = '8192';
+        document.getElementById('edge-length').value = 150;
+        document.getElementById('edge-length-value').textContent = '150';
+        document.getElementById('edge-elasticity').value = 100;
+        document.getElementById('edge-elasticity-value').textContent = '100';
+        document.getElementById('gravity').value = 1.0;
+        document.getElementById('gravity-value').textContent = '1.0';
+        document.getElementById('num-iter').value = 2500;
+        document.getElementById('num-iter-value').textContent = '2500';
+      });
+    }
   }
   
   // Create cluster legend

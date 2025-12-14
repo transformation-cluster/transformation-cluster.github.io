@@ -54,6 +54,41 @@ Entdecken Sie die Verbindungen zwischen 146 PhD-Forschern in unserem Cluster. Kl
 
 <div id="cluster-legend"></div>
 
+<div id="force-controls" class="force-controls" style="display: none;">
+  <h3>Kräftebasierte Layout-Parameter</h3>
+  <div class="force-control-grid">
+    <div class="control-group">
+      <label for="node-repulsion">Knotenabstoßung: <span id="node-repulsion-value">8192</span></label>
+      <input type="range" id="node-repulsion" min="1000" max="50000" step="100" value="8192">
+    </div>
+    
+    <div class="control-group">
+      <label for="edge-length">Ideale Kantenlänge: <span id="edge-length-value">150</span></label>
+      <input type="range" id="edge-length" min="50" max="500" step="10" value="150">
+    </div>
+    
+    <div class="control-group">
+      <label for="edge-elasticity">Kantenelastizität: <span id="edge-elasticity-value">100</span></label>
+      <input type="range" id="edge-elasticity" min="10" max="500" step="10" value="100">
+    </div>
+    
+    <div class="control-group">
+      <label for="gravity">Schwerkraft: <span id="gravity-value">1.0</span></label>
+      <input type="range" id="gravity" min="0.1" max="10" step="0.1" value="1.0">
+    </div>
+    
+    <div class="control-group">
+      <label for="num-iter">Iterationen: <span id="num-iter-value">2500</span></label>
+      <input type="range" id="num-iter" min="500" max="10000" step="100" value="2500">
+    </div>
+    
+    <div class="control-group">
+      <button id="apply-force-layout" class="btn btn-primary">Layout anwenden</button>
+      <button id="reset-force-params" class="btn">Parameter zurücksetzen</button>
+    </div>
+  </div>
+</div>
+
 ## Aktuelle Neuigkeiten
 
 Die neuesten Nachrichten und Updates finden Sie in unserem [News-Bereich](/news).
