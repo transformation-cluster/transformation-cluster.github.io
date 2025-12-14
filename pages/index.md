@@ -34,11 +34,6 @@ Entdecken Sie die Zusammenarbeit in unserem Forschungsteam. Klicken Sie auf die 
     <option value="concentric">Konzentrisch</option>
     <option value="breadthfirst">Hierarchisch</option>
   </select>
-  <div class="zoom-controls">
-    <button id="zoom-in" class="btn-zoom" title="Vergrößern">+</button>
-    <button id="zoom-out" class="btn-zoom" title="Verkleinern">−</button>
-    <button id="zoom-reset" class="btn-zoom" title="Zurücksetzen">⟲</button>
-  </div>
 </div>
 
 <div id="cy-graph" class="cytoscape-container"></div>

@@ -81,8 +81,9 @@
           },
           
           // Interaction options
-          minZoom: 0.5,
-          maxZoom: 3
+          userZoomingEnabled: false,
+          userPanningEnabled: false,
+          boxSelectionEnabled: false
         });
         
         // Store cy instance globally for layout switcher
@@ -186,32 +187,6 @@
             
             const layout = cy.layout(layouts[layoutName]);
             layout.run();
-          });
-        }
-        
-        // Add zoom controls
-        const zoomIn = document.getElementById('zoom-in');
-        const zoomOut = document.getElementById('zoom-out');
-        const zoomReset = document.getElementById('zoom-reset');
-        
-        if (zoomIn) {
-          zoomIn.addEventListener('click', function() {
-            cy.zoom(cy.zoom() * 1.2);
-            cy.center();
-          });
-        }
-        
-        if (zoomOut) {
-          zoomOut.addEventListener('click', function() {
-            cy.zoom(cy.zoom() * 0.8);
-            cy.center();
-          });
-        }
-        
-        if (zoomReset) {
-          zoomReset.addEventListener('click', function() {
-            cy.fit();
-            cy.zoom(1);
           });
         }
       })

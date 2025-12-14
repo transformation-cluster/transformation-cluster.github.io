@@ -34,11 +34,6 @@ Explore the collaboration within our research team. Click on nodes to visit team
     <option value="concentric">Concentric</option>
     <option value="breadthfirst">Hierarchical</option>
   </select>
-  <div class="zoom-controls">
-    <button id="zoom-in" class="btn-zoom" title="Zoom In">+</button>
-    <button id="zoom-out" class="btn-zoom" title="Zoom Out">−</button>
-    <button id="zoom-reset" class="btn-zoom" title="Reset">⟲</button>
-  </div>
 </div>
 
 <div id="cy-graph" class="cytoscape-container"></div>
