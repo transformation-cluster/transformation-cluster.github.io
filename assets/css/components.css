@@ -577,6 +577,11 @@ textarea:focus {
   position: relative;
 }
 
+/* Graph container must be positioned parent for popup */
+#cy-graph {
+  position: relative;
+}
+
 .graph-controls {
   display: flex;
   align-items: center;

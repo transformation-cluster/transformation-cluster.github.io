@@ -13,10 +13,34 @@
     const container = document.getElementById('cy-graph');
     if (!container) return;
     
-    // Fetch graph data
-    fetch('/assets/data/graph.json')
-      .then(response => response.json())
-      .then(graphData => {
+    // Fetch both graph structure and team data
+    Promise.all([
+      fetch('/assets/data/graph.json').then(r => r.json()),
+      fetch('/assets/data/team-data.json').then(r => r.json())
+    ])
+      .then(([graphData, teamData]) => {
+        // Create a lookup map for team data by ID
+        const teamMap = {};
+        teamData.team.forEach(member => {
+          teamMap[member.id] = member;
+        });
+        
+        // Enrich graph nodes with team data
+        graphData.nodes.forEach(node => {
+          const teamInfo = teamMap[node.data.id];
+          if (teamInfo) {
+            // Merge team data into node data, team data takes precedence
+            node.data = {
+              ...node.data,
+              name: teamInfo.name,
+              url: teamInfo.url,
+              photo: teamInfo.image,
+              role: teamInfo.role,
+              bio: teamInfo.bio
+            };
+          }
+        });
+        
         // Initialize Cytoscape
         const cy = cytoscape({
           container: container,
@@ -25,17 +49,33 @@
           
           style: [
             {
-              selector: 'node',
+              selector: 'node[photo]',
               style: {
                 'background-color': '#2d5016',
-                'background-image': function(ele) {
-                  const photo = ele.data('photo');
-                  return photo && photo.trim() !== '' ? photo : null;
-                },
+                'background-image': 'data(photo)',
                 'background-fit': 'cover',
                 'background-clip': 'node',
                 'border-width': 3,
                 'border-color': '#6b8e4e',
+                'width': 60,
+                'height': 60,
+                'shape': 'ellipse'
+              }
+            },
+            {
+              selector: 'node[!photo]',
+              style: {
+                'background-color': '#2d5016',
+                'border-width': 3,
+                'border-color': '#6b8e4e',
+                'width': 60,
+                'height': 60,
+                'shape': 'ellipse'
+              }
+            },
+            {
+              selector: 'node[name]',
+              style: {
                 'label': 'data(name)',
                 'color': '#333',
                 'text-outline-color': '#fff',
@@ -43,10 +83,20 @@
                 'font-size': '14px',
                 'font-weight': 'bold',
                 'text-valign': 'bottom',
-                'text-margin-y': 5,
-                'width': 60,
-                'height': 60,
-                'shape': 'ellipse'
+                'text-margin-y': 5
+              }
+            },
+            {
+              selector: 'node[!name]',
+              style: {
+                'label': 'data(id)',
+                'color': '#666',
+                'text-outline-color': '#fff',
+                'text-outline-width': 2,
+                'font-size': '12px',
+                'font-weight': 'normal',
+                'text-valign': 'bottom',
+                'text-margin-y': 5
               }
             },
             {
@@ -100,38 +150,44 @@
         
         // Hover popup functionality
         const popup = document.getElementById('cy-popup');
+        console.log('Popup element found:', popup);
+        
         if (popup) {
           cy.on('mouseover', 'node', function(evt) {
             const node = evt.target;
-            const name = node.data('name');
+            const name = node.data('name') || node.data('id');
             const role = node.data('role');
             const bio = node.data('bio');
             
-            popup.innerHTML = `
-              <div class="popup-header">
-                <strong>${name}</strong>
-              </div>
-              <div class="popup-role">${role}</div>
-              <div class="popup-bio">${bio}</div>
-              <div class="popup-hint">Click to view profile</div>
-            `;
+            console.log('Node hover:', { name, role, bio });
             
+            // Only show popup if there's meaningful data
+            if (!name && !role && !bio) {
+              console.log('No data to show in popup');
+              return;
+            }
+            
+            let content = `<div class="popup-header"><strong>${name}</strong></div>`;
+            if (role) content += `<div class="popup-role">${role}</div>`;
+            if (bio) content += `<div class="popup-bio">${bio}</div>`;
+            if (node.data('url')) content += `<div class="popup-hint">Click to view profile</div>`;
+            
+            popup.innerHTML = content;
             popup.style.display = 'block';
             
-            // Position popup near cursor
+            // Position popup near node (relative to container)
             const renderedPos = node.renderedPosition();
+            console.log('Rendered position:', renderedPos);
             popup.style.left = (renderedPos.x + 40) + 'px';
             popup.style.top = (renderedPos.y - 20) + 'px';
           });
           
           cy.on('mouseout', 'node', function() {
+            console.log('Node mouseout');
             popup.style.display = 'none';
           });
-          
-          // Hide popup when panning/zooming
-          cy.on('pan zoom', function() {
-            popup.style.display = 'none';
-          });
+        } else {
+          console.error('Popup element #cy-popup not found!');
         }
         
         // Layout switcher

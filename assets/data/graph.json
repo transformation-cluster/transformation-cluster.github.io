@@ -2,52 +2,27 @@
   "nodes": [
     {
       "data": {
-        "id": "max-mustermann",
-        "name": "Max Mustermann",
-        "url": "/team/max-mustermann/",
-        "photo": "/assets/images/team/max-mustermann.jpg",
-        "role": "Principal Investigator",
-        "bio": "Expert in transformation research and interdisciplinary collaboration"
+        "id": "max-mustermann"
       }
     },
     {
       "data": {
-        "id": "team-member-2",
-        "name": "Anna Schmidt",
-        "url": "/team/",
-        "photo": "",
-        "role": "Postdoctoral Researcher",
-        "bio": "Specializes in social transformation processes"
+        "id": "team-member-2"
       }
     },
     {
       "data": {
-        "id": "team-member-3",
-        "name": "Peter Müller",
-        "url": "/team/",
-        "photo": "",
-        "role": "PhD Candidate",
-        "bio": "Researching sustainable transformation pathways"
+        "id": "team-member-3"
       }
     },
     {
       "data": {
-        "id": "team-member-4",
-        "name": "Lisa Weber",
-        "url": "/team/",
-        "photo": "",
-        "role": "Research Associate",
-        "bio": "Focus on economic transformation dynamics"
+        "id": "team-member-4"
       }
     },
     {
       "data": {
-        "id": "team-member-5",
-        "name": "Thomas Klein",
-        "url": "/team/",
-        "photo": "",
-        "role": "Senior Researcher",
-        "bio": "Expert in policy and governance transformation"
+        "id": "team-member-5"
       }
     }
   ],
