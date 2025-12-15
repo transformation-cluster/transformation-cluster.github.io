@@ -303,13 +303,13 @@
             popup.style.maxHeight = 'none';
             popup.style.transform = 'none';
             
-            // Position popup near node
+            // Position popup near node, accounting for container offset
             const renderedPos = node.renderedPosition();
-            const pan = cy.pan();
-            const zoom = cy.zoom();
+            const container = cy.container();
+            const containerRect = container.getBoundingClientRect();
             
-            popup.style.left = (renderedPos.x + 40) + 'px';
-            popup.style.top = (renderedPos.y - 20) + 'px';
+            popup.style.left = (containerRect.left + renderedPos.x + 40) + 'px';
+            popup.style.top = (containerRect.top + renderedPos.y - 20 + window.scrollY) + 'px';
           });
           
           cy.on('mouseout', 'node', function() {
