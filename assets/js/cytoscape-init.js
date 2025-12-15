@@ -430,13 +430,16 @@
       padding: 50,
       nodeRepulsion: function(node) { return nodeRepulsion; },
       idealEdgeLength: function(edge) {
-        const weight = edge.data('weight') || 0.5;
-        // Use slider value as base, adjust by weight
-        return edgeLength * (0.5 + (1 - weight) * 0.5);
+        const weight = edge.data('weight') || 0.1;
+        // Higher weight = shorter edge (stronger connections pull nodes closer)
+        // weight 1.0 -> edgeLength * 0.3, weight 0.0 -> edgeLength * 1.5
+        return edgeLength * (1.5 - weight * 1.2);
       },
       edgeElasticity: function(edge) {
-        const weight = edge.data('weight') || 0.5;
-        return weight * edgeElasticity;
+        const weight = edge.data('weight') || 0.1;
+        // Higher weight = higher elasticity (stronger spring force)
+        // Use squared weight for more pronounced effect
+        return Math.pow(weight, 1.5) * edgeElasticity;
       },
       gravity: gravity,
       numIter: numIter,
